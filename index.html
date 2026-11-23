@@ -175,6 +175,37 @@ body{color:#3a2a0c}
 .card .badge{font-size:10px;top:8px;left:8px}
 .foot{font-size:3vw!important;margin-top:4vh!important;padding-top:0!important}
 }
+/* خمس منصات: ٣ فوق و٢ تحت */
+.grid{grid-template-columns:repeat(6,1fr)!important}
+.card{grid-column:span 2!important}
+.card:nth-child(4){grid-column:2 / span 2!important}
+.card:nth-child(5){grid-column:4 / span 2!important}
+.card .ic{flex:none!important;aspect-ratio:1}
+@media (max-width:1000px),(orientation:portrait){
+ #hub{overflow-y:auto;touch-action:pan-y}
+ .grid{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;flex:none!important}
+ .card,.card:nth-child(4){grid-column:auto!important}
+ .card:nth-child(5){grid-column:1/-1!important}
+ .foot{margin-top:4vh!important}
+}
+
+/* ===== تخطيط مرن لشاشة القص: العناصر مرتبة فوق بعض ولا تتداخل على أي شاشة ===== */
+#launch{justify-content:space-between!important;padding:max(4.5vh,30px) 0 max(5vh,34px);overflow:hidden}
+#launch .ministry,#launch .hero,#launch .ribbon-zone,#launch .guest,#launch .hint{position:relative!important;top:auto!important;bottom:auto!important;left:auto!important;right:auto!important;margin:0!important}
+#launch .ministry{font-size:clamp(11px,min(1.5vw,2.6vh),22px)!important}
+#launch .hero{width:88vw}
+#launch .hero .small{font-size:clamp(15px,min(2.4vw,4.2vh),42px)!important;margin-bottom:1vh!important;padding:.2em 1.2em!important}
+#launch .hero h1{font-size:clamp(28px,min(5.6vw,10vh),104px)!important;line-height:1.3!important}
+#launch .ornament{margin:.6vh auto 1vh!important}
+#launch .hero .sub{font-size:clamp(15px,min(2.6vw,4.6vh),46px)!important}
+#launch .ribbon-zone{width:100%;height:clamp(70px,17vh,190px);flex:none}
+#launch .ribbon{height:clamp(44px,9vh,100px)!important;min-height:0!important}
+#launch .bow{width:clamp(80px,19vh,210px)!important;height:clamp(80px,19vh,210px)!important;min-width:0!important;min-height:0!important}
+#launch .post{top:-6vh!important;height:120vh!important;z-index:0}
+#launch .post::before{top:-3vh!important;width:clamp(30px,6vh,70px)!important;height:clamp(30px,6vh,70px)!important}
+#launch .guest{display:block;font-size:clamp(14px,min(2.1vw,3.7vh),38px)!important;line-height:1.3!important;padding:0 6vw}
+#launch .hint{font-size:clamp(13px,min(1.7vw,3vh),28px)!important}
+#launch .announce{top:40vh!important}
 </style>
 </head>
 <body>
@@ -191,10 +222,10 @@ body{color:#3a2a0c}
     <div class="small">تدشين المنصات الإلكترونية</div>
     <h1>جيل السلام.. هويتنا الرقمية</h1>
     <div class="ornament"></div>
-    <div class="sub">أربع منصات.. ورؤية واحدة نحو تعلّمٍ متميّز</div>
+    <div class="sub">خمس منصات.. ورؤية واحدة نحو تعلّمٍ متميّز</div>
   </div>
-  <div class="post r"></div><div class="post l"></div>
   <div class="ribbon-zone" id="zone">
+    <div class="post r"></div><div class="post l"></div>
     <div class="ribbon left" id="rL"></div>
     <div class="ribbon right" id="rR"></div>
     <div class="cutline" id="cutline"></div>
@@ -261,12 +292,13 @@ const DEFAULTS=[
  {name:"منصة مدرسة جيل السلام",desc:"البوابة الرقمية للمدرسة: الأخبار والإنجازات والخدمات",icon:"🏫",c:"linear-gradient(135deg,#d9b25f,#8a6a2a)",url:"https://jeel-alsalam.github.io/#home",mode:"frame"},
  {name:"منصة الأمن والسلامة",desc:"منصة شاملة لأعمال جماعة الأمن والسلامة: المناشط والفعاليات وكل ما يخص الجماعة",icon:"🛡️",c:"linear-gradient(135deg,#e85d4a,#9a2617)",url:"https://sites.google.com/view/jeel-alsalam-safety/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9",mode:"tab"},
  {name:"منصة الهوية والمواطنة",desc:"منصة شاملة لمنهج الهوية والمواطنة: تحاضير وأنشطة وكل ما تحتاجه المعلمات",icon:"🇴🇲",c:"linear-gradient(135deg,#2e9e5b,#14572f)",url:"https://sites.google.com/edu.moe.om/oman2026",mode:"tab"},
- {name:"منصة الصف الأول",desc:"منصة إنجازي: ألعاب وأنشطة تفاعلية لطلبة الصف الأول",icon:"⭐",c:"linear-gradient(135deg,#3b8bea,#17488f)",url:"https://jeel-alsalam.github.io/INJAZY/",mode:"frame"}
+ {name:"منصة الصف الأول",desc:"منصة إنجازي: ألعاب وأنشطة تفاعلية لطلبة الصف الأول",icon:"⭐",c:"linear-gradient(135deg,#3b8bea,#17488f)",url:"https://jeel-alsalam.github.io/INJAZY/",mode:"frame"},
+ {name:"منصة الصف الثاني: رحلة نجومي",desc:"منصة خاصة للأمهات لمتابعة المستوى التحصيلي لطلبة الصف الثاني",icon:"🌟",c:"linear-gradient(135deg,#9a5ae0,#552394)",url:"https://musical-pudding-19f150.netlify.app",mode:"tab"}
 ];
-const KEY="jeel-launch-v4",GKEY="jeel-guest-v2";
+const KEY="jeel-launch-v5",GKEY="jeel-guest-v2";
 let GUEST="الدكتور/ فاضل المزيني",GTITLE="مدير دائرة تطوير الأداء المدرسي";try{const g=JSON.parse(localStorage.getItem(GKEY));if(g){GUEST=g.n;GTITLE=g.t}}catch(e){}
 let P=load(), visited=new Set(), cut=false;
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(s)&&s.length===4)return s}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(s)&&s.length===5)return s}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
 function store(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const $=id=>document.getElementById(id);
 
@@ -280,7 +312,7 @@ function chime(){tone(880,0,.5);tone(1320,.1,.7)}
 /* ---------- قص الشريط ---------- */
 const zone=$("zone"),sc=$("scissors");
 let dragging=false,startX=0;
-zone.addEventListener("pointerdown",e=>{if(cut)return;ac();dragging=true;startX=e.clientX;showSc(e)});
+zone.addEventListener("pointerdown",e=>{if(cut)return;ac();try{speechSynthesis.getVoices()}catch(_){}dragging=true;startX=e.clientX;showSc(e)});
 window.addEventListener("pointermove",e=>{if(dragging&&!cut)showSc(e)});
 window.addEventListener("pointerup",e=>{if(!dragging||cut)return;dragging=false;doCut(innerWidth/2)});
 window.addEventListener("keydown",e=>{if((e.code==="Space"||e.code==="Enter")&&!cut&&!$("launch").classList.contains("hidden")){ac();doCut(innerWidth/2)}});
@@ -300,12 +332,35 @@ function doCut(x){
     $("bow").style.transform="translate(-50%,40vh) rotate(160deg)";$("bow").style.opacity=0;
     $("hint").style.opacity=0;
     $("flash").classList.remove("go");void $("flash").offsetWidth;$("flash").classList.add("go");
-    fanfare();burst(cx,zone.getBoundingClientRect().top+zone.offsetHeight/2,260);
+    speakThanks();burst(cx,zone.getBoundingClientRect().top+zone.offsetHeight/2,260);
     setTimeout(()=>burst(W*.2,innerHeight*.3,120),400);setTimeout(()=>burst(W*.8,innerHeight*.3,120),700);
     $("announce").classList.add("show");
     rain(4200);
   },350);
-  setTimeout(()=>{$("launch").classList.add("hidden");showHub()},3600);
+  setTimeout(()=>{$("launch").classList.add("hidden");showHub()},5200);
+}
+
+
+/* ---------- التعليق الصوتي بعد القص ---------- */
+function thanksText(){
+  const name=(GUEST||"").replace(/\//g," ").replace(/\s+/g," ").trim();
+  return (name?`شكرًا جزيلًا ${name.startsWith("ال")?"ل"+name.slice(1):"لـ"+name} على تدشين منصاتنا الإلكترونية. `:"شكرًا لكم على تدشين منصاتنا الإلكترونية. ")+
+         "والآن، سوف نستعرض معكم منصات مدرسة جيل السلام الإلكترونية.";
+}
+function speakTTS(){
+  try{
+    const ss=window.speechSynthesis;if(!ss)return;
+    const go=()=>{const u=new SpeechSynthesisUtterance(thanksText());u.lang="ar-SA";u.rate=.9;u.pitch=1;
+      const v=ss.getVoices().filter(v=>/^ar/i.test(v.lang));if(v.length)u.voice=v.find(x=>/female|Laila|Hoda|Zariyah|Salma|Google/i.test(x.name))||v[0];
+      ss.cancel();ss.speak(u)};
+    if(ss.getVoices().length)go();else{ss.onvoiceschanged=()=>{ss.onvoiceschanged=null;go()};setTimeout(go,600)}
+  }catch(e){}
+}
+function speakThanks(){
+  // إذا وُجد ملف voice.mp3 بجانب الصفحة يُشغَّل (تسجيل بصوت حقيقي)، وإلا يُقرأ النص بصوت الجهاز
+  const a=new Audio("voice.mp3");let done=false;
+  a.onerror=()=>{if(!done){done=true;speakTTS()}};
+  a.play().then(()=>{done=true}).catch(()=>{if(!done){done=true;speakTTS()}});
 }
 
 /* ---------- قصاصات احتفالية ---------- */
