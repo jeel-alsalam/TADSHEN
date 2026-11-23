@@ -178,14 +178,12 @@ body{color:#3a2a0c}
 /* خمس منصات: ٣ فوق و٢ تحت */
 .grid{grid-template-columns:repeat(6,1fr)!important}
 .card{grid-column:span 2!important}
-.card:nth-child(4){grid-column:2 / span 2!important}
-.card:nth-child(5){grid-column:4 / span 2!important}
+
 .card .ic{flex:none!important;aspect-ratio:1}
 @media (max-width:1000px),(orientation:portrait){
  #hub{overflow-y:auto;touch-action:pan-y}
  .grid{grid-template-columns:1fr 1fr!important;grid-template-rows:auto!important;flex:none!important}
  .card,.card:nth-child(4){grid-column:auto!important}
- .card:nth-child(5){grid-column:1/-1!important}
  .foot{margin-top:4vh!important}
 }
 
@@ -222,7 +220,7 @@ body{color:#3a2a0c}
     <div class="small">تدشين المنصات الإلكترونية</div>
     <h1>جيل السلام.. هويتنا الرقمية</h1>
     <div class="ornament"></div>
-    <div class="sub">خمس منصات.. ورؤية واحدة نحو تعلّمٍ متميّز</div>
+    <div class="sub">ست منصات.. ورؤية واحدة نحو تعلّمٍ متميّز</div>
   </div>
   <div class="ribbon-zone" id="zone">
     <div class="post r"></div><div class="post l"></div>
@@ -293,12 +291,13 @@ const DEFAULTS=[
  {name:"منصة الأمن والسلامة",desc:"منصة شاملة لأعمال جماعة الأمن والسلامة: المناشط والفعاليات وكل ما يخص الجماعة",icon:"🛡️",c:"linear-gradient(135deg,#e85d4a,#9a2617)",url:"https://sites.google.com/view/jeel-alsalam-safety/%D8%A7%D9%84%D8%B5%D9%81%D8%AD%D8%A9-%D8%A7%D9%84%D8%B1%D8%A6%D9%8A%D8%B3%D9%8A%D8%A9",mode:"tab"},
  {name:"منصة الهوية والمواطنة",desc:"منصة شاملة لمنهج الهوية والمواطنة: تحاضير وأنشطة وكل ما تحتاجه المعلمات",icon:"🇴🇲",c:"linear-gradient(135deg,#2e9e5b,#14572f)",url:"https://sites.google.com/edu.moe.om/oman2026",mode:"tab"},
  {name:"منصة الصف الأول",desc:"منصة إنجازي: ألعاب وأنشطة تفاعلية لطلبة الصف الأول",icon:"⭐",c:"linear-gradient(135deg,#3b8bea,#17488f)",url:"https://jeel-alsalam.github.io/INJAZY/",mode:"frame"},
- {name:"منصة الصف الثاني: رحلة نجومي",desc:"منصة خاصة للأمهات لمتابعة المستوى التحصيلي لطلبة الصف الثاني",icon:"🌟",c:"linear-gradient(135deg,#9a5ae0,#552394)",url:"https://musical-pudding-19f150.netlify.app",mode:"tab"}
+ {name:"منصة الصف الثاني: رحلة نجومي",desc:"منصة خاصة للأمهات لمتابعة المستوى التحصيلي لطلبة الصف الثاني",icon:"🌟",c:"linear-gradient(135deg,#9a5ae0,#552394)",url:"https://musical-pudding-19f150.netlify.app",mode:"tab"},
+ {name:"منصة Edu Venture",desc:"منصة لدعم مهارات القراءة والتحدث في اللغة الإنجليزية، ومصدر إضافي للطلبة وأولياء الأمور لمراجعة الدروس بطريقة مبسطة وممتعة",icon:"📖",c:"linear-gradient(135deg,#1fb5a8,#0d6b63)",url:"https://sites.google.com/view/www-t-amal-com/home",mode:"tab"}
 ];
-const KEY="jeel-launch-v5",GKEY="jeel-guest-v2";
+const KEY="jeel-launch-v7",GKEY="jeel-guest-v2";
 let GUEST="الدكتور/ فاضل المزيني",GTITLE="مدير دائرة تطوير الأداء المدرسي";try{const g=JSON.parse(localStorage.getItem(GKEY));if(g){GUEST=g.n;GTITLE=g.t}}catch(e){}
 let P=load(), visited=new Set(), cut=false;
-function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(s)&&s.length===5)return s}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
+function load(){try{const s=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(s)&&s.length===6)return s}catch(e){}return JSON.parse(JSON.stringify(DEFAULTS))}
 function store(){try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}}
 const $=id=>document.getElementById(id);
 
